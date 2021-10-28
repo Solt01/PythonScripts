@@ -1,0 +1,16 @@
+import os
+
+#directory = input("Input directory:")
+KeyWord = input("Input Key Word:")
+
+# распечатать все файлы и папки рекурсивно
+for dirpath, dirnames, filenames in os.walk("."):
+    # перебрать каталоги
+    for dirname in dirnames:
+        print("Каталог:", os.path.join(dirpath, dirname))
+    # перебрать файлы
+    for filename in filenames:
+        with open(os.path.join(dirpath, filename)) as file:
+            for line in file:
+                if KeyWord in line:
+                    print("Файл:", os.path.join(dirpath, filename))
